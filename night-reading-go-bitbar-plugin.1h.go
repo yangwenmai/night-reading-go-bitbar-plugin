@@ -40,17 +40,19 @@ func main() {
 	nightReadingGo := " Go 夜读 - " + total
 	app.StatusLine(nightReadingGo)
 
-	preShare := fmt.Sprintf("预分享（%d）", len(preShares))
-	submenu.Line(preShare).Color("#f2f096")
-
-	for _, rs := range preShares {
-		subsubmenu := submenu.NewSubMenu()
-		subsubmenu.Line(rs.title).Href(rs.link).Color("black")
-	}
+	submenu.Line("Refresh...").Color("black").Refresh()
 
 	planed := fmt.Sprintf("已排期（%d)", len(planeds))
 	submenu.Line(planed).Color("#c115a7")
 	for _, rs := range planeds {
+		subsubmenu := submenu.NewSubMenu()
+		subsubmenu.Line(rs.title).Href(rs.link).Color("black")
+	}
+
+	preShare := fmt.Sprintf("预分享（%d）", len(preShares))
+	submenu.Line(preShare).Color("#f2f096")
+
+	for _, rs := range preShares {
 		subsubmenu := submenu.NewSubMenu()
 		subsubmenu.Line(rs.title).Href(rs.link).Color("black")
 	}
